@@ -1,8 +1,8 @@
 * {
   margin: 0px;
   padding: 0px;
-  background-color: #2e2e2e;
-  color: white;
+  color: #ffffff;
+  font-size: 10vh;
 }
 
 .gameWindow {
@@ -10,9 +10,24 @@
   grid-template-columns: 1fr 8fr;
   grid-template-rows: 6fr 6fr 6fr 6fr 6fr 6fr;
   height: 99vh;
+  overflow: hidden;
   width: 99%;
   grid-template-areas: "playerG1 lane1" "playerG2 lane2" "playerG3 lane3" "playerG4 lane4" "playerG5 lane5" "playerG6 lane6";
   text-align: right;
+}
+.gameWindow .sliding-background {
+  position: absolute;
+  height: 100%;
+  width: 300%;
+  background-image: url("https://wallpapercave.com/wp/wp7872562.jpg");
+  animation: slide 10s linear infinite;
+}
+.gameWindow .playerGrids {
+  height: 10vh;
+}
+.gameWindow .playerGrids h1 {
+  position: absolute;
+  z-index: 1;
 }
 .gameWindow #gameWindow__playerGrid1 {
   grid-area: playerG1;
@@ -34,13 +49,13 @@
 }
 .gameWindow .lanes p {
   position: absolute;
-  top: 25%;
-  left: -50%;
+  top: 20%;
+  left: -100%;
   font-size: xx-large;
   color: white;
 }
 .gameWindow .lanes p img {
-  height: 10vh;
+  height: 9vh;
 }
 .gameWindow #lane1 {
   position: relative;
@@ -68,6 +83,14 @@
     right: 50%;
   }
   100% {
-    right: 100%;
+    right: 115%;
+  }
+}
+@keyframes slide {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-60%, 0, 0);
   }
 }

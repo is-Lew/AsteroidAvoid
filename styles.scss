@@ -1,15 +1,26 @@
 * {
     margin: 0px;
     padding: 0px;
-    background-color: rgb(46, 46, 46);
-    color: white;
+    // background-color: rgb(46, 46, 46);
+    color: #ffffff; 
+    font-size: 10vh;
 }
+
 
 .gameWindow {
     display: grid;
     grid-template-columns: 1fr 8fr;
     grid-template-rows: 6fr 6fr 6fr 6fr 6fr 6fr;
     height: 99vh;
+    overflow: hidden;
+
+    .sliding-background {
+        position: absolute;
+        height: 100%;
+        width: 300%;
+        background-image: url("https://wallpapercave.com/wp/wp7872562.jpg");
+        animation: slide 10s linear infinite;
+    }
     
 
     width: 99%;
@@ -21,38 +32,60 @@
     "playerG5 lane5"
     "playerG6 lane6";
     text-align: right;
+
+    
+               
+        
+        .playerGrids {
+            height: 10vh;   
+            
+            
+            h1 {
+                position: absolute;
+                z-index: 1;
+            }
+
+        }
+
+    
     
     
 
     #gameWindow__playerGrid1 {
         
         grid-area: playerG1;
-
+        
         
     }
     #gameWindow__playerGrid2 {
        
         grid-area: playerG2;
         
+        
     }
     #gameWindow__playerGrid3 {
         
         grid-area: playerG3;
+        
         
     }
     #gameWindow__playerGrid4 {
         
         grid-area: playerG4;
         
+        
+        
     }
     #gameWindow__playerGrid5 {
         
         grid-area: playerG5;
         
+        
     }
     #gameWindow__playerGrid6 {
         
         grid-area: playerG6;
+        
         
     }
 
@@ -62,13 +95,14 @@
 
         p {
             position: absolute;           
-            top: 25%;
-            left: -50%;
+            top: 20%;
+            left: -100%;
             font-size: xx-large;
             color: white;
 
             img {
-                height: 10vh;
+                height: 9vh;
+                                
             }
         }
 
@@ -109,10 +143,21 @@
           right: 50%;
         }
         100% {
-          right: 100%;
+          right: 115%;
           // Percentages specify when the style change will happen (could up from & to for a-b animation)
         }
-      }
+    }
+
+    @keyframes slide {
+        0% {
+          transform: translate3d(0, 0, 0);
+        }
+        100% {
+          transform: translate3d(-60%, 0, 0);
+        }
+    }
+
+    
 
 }
 
