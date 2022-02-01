@@ -1,15 +1,18 @@
 * {
     margin: 0px;
     padding: 0px;
-    background-color: rgb(48, 48, 48);
+    background-color: rgb(46, 46, 46);
+    color: white;
 }
 
 .gameWindow {
     display: grid;
     grid-template-columns: 1fr 8fr;
     grid-template-rows: 6fr 6fr 6fr 6fr 6fr 6fr;
-    height: 75vh;
-    width: 75%;
+    height: 99vh;
+    
+
+    width: 99%;
     grid-template-areas: 
     "playerG1 lane1"
     "playerG2 lane2"
@@ -22,32 +25,33 @@
     
 
     #gameWindow__playerGrid1 {
-    
+        
         grid-area: playerG1;
+
         
     }
     #gameWindow__playerGrid2 {
-    
+       
         grid-area: playerG2;
         
     }
     #gameWindow__playerGrid3 {
-    
+        
         grid-area: playerG3;
         
     }
     #gameWindow__playerGrid4 {
-    
+        
         grid-area: playerG4;
         
     }
     #gameWindow__playerGrid5 {
-    
+        
         grid-area: playerG5;
         
     }
     #gameWindow__playerGrid6 {
-    
+        
         grid-area: playerG6;
         
     }
@@ -58,7 +62,7 @@
 
         p {
             position: absolute;           
-            
+            background-image: ;
             top: 25%;
             left: -15%;
             font-size: xx-large;
@@ -68,9 +72,9 @@
     }
 
     #lane1 {
-         position: relative;
         
-
+        position: relative;
+        
     }
     #lane2 {
         
@@ -102,8 +106,8 @@
           right: 50%;
         }
         100% {
-          right: 99%;
-    
+          right: 100%;
+          // Percentages specify when the style change will happen (could up from & to for a-b animation)
         }
       }
 

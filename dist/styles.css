@@ -1,15 +1,16 @@
 * {
   margin: 0px;
   padding: 0px;
-  background-color: #303030;
+  background-color: #2e2e2e;
+  color: white;
 }
 
 .gameWindow {
   display: grid;
   grid-template-columns: 1fr 8fr;
   grid-template-rows: 6fr 6fr 6fr 6fr 6fr 6fr;
-  height: 75vh;
-  width: 75%;
+  height: 99vh;
+  width: 99%;
   grid-template-areas: "playerG1 lane1" "playerG2 lane2" "playerG3 lane3" "playerG4 lane4" "playerG5 lane5" "playerG6 lane6";
   text-align: right;
 }
@@ -64,6 +65,6 @@
     right: 50%;
   }
   100% {
-    right: 99%;
+    right: 100%;
   }
 }
