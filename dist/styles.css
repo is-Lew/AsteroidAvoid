@@ -35,9 +35,12 @@
 .gameWindow .lanes p {
   position: absolute;
   top: 25%;
-  left: -15%;
+  left: -50%;
   font-size: xx-large;
   color: white;
+}
+.gameWindow .lanes p img {
+  height: 10vh;
 }
 .gameWindow #lane1 {
   position: relative;

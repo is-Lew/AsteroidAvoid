@@ -62,11 +62,14 @@
 
         p {
             position: absolute;           
-            background-image: ;
             top: 25%;
-            left: -15%;
+            left: -50%;
             font-size: xx-large;
             color: white;
+
+            img {
+                height: 10vh;
+            }
         }
 
     }
