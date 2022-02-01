@@ -1,6 +1,7 @@
 * {
   margin: 0px;
   padding: 0px;
+  background-color: #303030;
 }
 
 .gameWindow {
@@ -13,27 +14,21 @@
   text-align: right;
 }
 .gameWindow #gameWindow__playerGrid1 {
-  background-color: aquamarine;
   grid-area: playerG1;
 }
 .gameWindow #gameWindow__playerGrid2 {
-  background-color: aquamarine;
   grid-area: playerG2;
 }
 .gameWindow #gameWindow__playerGrid3 {
-  background-color: aquamarine;
   grid-area: playerG3;
 }
 .gameWindow #gameWindow__playerGrid4 {
-  background-color: aquamarine;
   grid-area: playerG4;
 }
 .gameWindow #gameWindow__playerGrid5 {
-  background-color: aquamarine;
   grid-area: playerG5;
 }
 .gameWindow #gameWindow__playerGrid6 {
-  background-color: aquamarine;
   grid-area: playerG6;
 }
 .gameWindow .lanes p {
@@ -44,27 +39,21 @@
   color: white;
 }
 .gameWindow #lane1 {
-  background-color: brown;
   position: relative;
 }
 .gameWindow #lane2 {
-  background-color: yellow;
   position: relative;
 }
 .gameWindow #lane3 {
-  background-color: orange;
   position: relative;
 }
 .gameWindow #lane4 {
-  background-color: pink;
   position: relative;
 }
 .gameWindow #lane5 {
-  background-color: purple;
   position: relative;
 }
 .gameWindow #lane6 {
-  background-color: grey;
   position: relative;
 }
 @keyframes asteroid {
