@@ -1,0 +1,112 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.gameWindow {
+    display: grid;
+    grid-template-columns: 1fr 8fr;
+    grid-template-rows: 6fr 6fr 6fr 6fr 6fr 6fr;
+    height: 75vh;
+    width: 75%;
+    grid-template-areas: 
+    "playerG1 lane1"
+    "playerG2 lane2"
+    "playerG3 lane3"
+    "playerG4 lane4"
+    "playerG5 lane5"
+    "playerG6 lane6";
+    text-align: right;
+    
+    
+
+    #gameWindow__playerGrid1 {
+        background-color: aquamarine;
+        grid-area: playerG1;
+        
+    }
+    #gameWindow__playerGrid2 {
+        background-color: aquamarine;
+        grid-area: playerG2;
+        
+    }
+    #gameWindow__playerGrid3 {
+        background-color: aquamarine;
+        grid-area: playerG3;
+        
+    }
+    #gameWindow__playerGrid4 {
+        background-color: aquamarine;
+        grid-area: playerG4;
+        
+    }
+    #gameWindow__playerGrid5 {
+        background-color: aquamarine;
+        grid-area: playerG5;
+        
+    }
+    #gameWindow__playerGrid6 {
+        background-color: aquamarine;
+        grid-area: playerG6;
+        
+    }
+
+    .lanes {
+         
+    
+
+        p {
+            position: absolute;           
+            
+            top: 25%;
+            left: -15%;
+            font-size: xx-large;
+            color: white;
+        }
+
+    }
+
+    #lane1 {
+        background-color: brown;
+        position: relative;
+        
+        
+    }
+    #lane2 {
+        background-color: yellow;
+        position: relative;
+    }
+    #lane3 {
+        background-color: orange;
+        position: relative;
+    }
+    #lane4 {
+        background-color: pink;
+        position: relative;
+        
+    }
+    #lane5 {
+        background-color: purple;
+        position: relative;
+    }
+    #lane6 {
+        background-color: grey;
+        position: relative;
+    }
+
+    @keyframes asteroid {
+        0% {
+          right: 0%;
+        }
+        50% {
+          right: 50%;
+        }
+        100% {
+          right: 99%;
+          // Percentages specify when the style change will happen (could up from & to for a-b animation)
+        }
+      }
+
+}
+
+
