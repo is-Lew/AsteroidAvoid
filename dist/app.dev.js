@@ -5,59 +5,40 @@ var playerGridArr = document.querySelectorAll(".playerGrids");
 var lane1Asteroid = document.getElementById("lane1");
 var asteroidLaneArr = document.querySelectorAll(".lanes");
 var animations = document.querySelectorAll(".animate");
-var ptag = document.querySelectorAll("p"); // Spawn asteroids randomly in one of 6 lanes
+var ptag = document.querySelectorAll("p");
+var score = document.querySelector(".score"); // const highestScore = document.querySelector(".highestScore")
+// Spawn asteroids randomly in one of 6 lanes
 
 var generateAsteroid = function generateAsteroid() {
   var nextAsteroidLocation = Math.floor(Math.random() * 6);
   ptag[nextAsteroidLocation].style.animation = "asteroid 1s linear";
 };
 
-var asteroidTimer = setInterval(generateAsteroid, 250); // If asteroid reaches left end of lane and corresponding player box has player in end game 
+var asteroidSpeed = setInterval(generateAsteroid, 250); // track score
+// If asteroid reaches left end of lane and corresponding player box has player in end game 
+// const checkForCrash = () => {
 
-asteroidLaneArr[0].addEventListener("animationend", function () {
-  ptag[0].style.animation = "";
+var _loop = function _loop(i) {
+  asteroidLaneArr[i].addEventListener("animationend", function () {
+    ptag[i].style.animation = "";
 
-  if (playerGridArr[0].innerHTML.includes("👾")) {
-    alert("crash");
-  }
-});
-asteroidLaneArr[1].addEventListener("animationend", function () {
-  ptag[1].style.animation = "";
+    if (playerGridArr[i].innerHTML.includes("👾")) {
+      alert("crash");
+    }
 
-  if (playerGridArr[1].innerHTML.includes("👾")) {
-    alert("crash");
-  }
-});
-asteroidLaneArr[2].addEventListener("animationend", function () {
-  ptag[2].style.animation = "";
+    score.innerHTML++;
+  });
+};
 
-  if (playerGridArr[2].innerHTML.includes("👾")) {
-    alert("crash");
-  }
-});
-asteroidLaneArr[3].addEventListener("animationend", function () {
-  ptag[3].style.animation = "";
+for (var i = 0; i < asteroidLaneArr.length; i++) {
+  _loop(i);
+} // }
+// keystroke or click to move player to different grid position 
+// const movePlayer = () => {
 
-  if (playerGridArr[3].innerHTML.includes("👾")) {
-    alert("crash");
-  }
-});
-asteroidLaneArr[4].addEventListener("animationend", function () {
-  ptag[4].style.animation = "";
 
-  if (playerGridArr[4].innerHTML.includes("👾")) {
-    alert("crash");
-  }
-});
-asteroidLaneArr[5].addEventListener("animationend", function () {
-  ptag[5].style.animation = "";
-
-  if (playerGridArr[5].innerHTML.includes("👾")) {
-    alert("crash");
-  }
-}); // keystroke or click to move player to different grid position 
-
-document.addEventListener('keydown', function (event) {
+var gameWindow = document.querySelector("body");
+gameWindow.addEventListener('keydown', function (event) {
   switch (event.key) {
     case 'ArrowUp':
       if (playerGridArr[1].innerHTML.includes("👾")) {
@@ -99,4 +80,4 @@ document.addEventListener('keydown', function (event) {
 
       break;
   }
-});
+}); // }

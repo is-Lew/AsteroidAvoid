@@ -1,8 +1,10 @@
 * {
   margin: 0px;
   padding: 0px;
+  font-family: "Orbitron", sans-serif;
   color: #ffffff;
   font-size: 10vh;
+  overflow: hidden;
 }
 
 .gameWindow {
@@ -10,7 +12,6 @@
   grid-template-columns: 1fr 8fr;
   grid-template-rows: 6fr 6fr 6fr 6fr 6fr 6fr;
   height: 99vh;
-  overflow: hidden;
   width: 99%;
   grid-template-areas: "playerG1 lane1" "playerG2 lane2" "playerG3 lane3" "playerG4 lane4" "playerG5 lane5" "playerG6 lane6";
   text-align: right;
@@ -47,6 +48,9 @@
 .gameWindow #gameWindow__playerGrid6 {
   grid-area: playerG6;
 }
+.gameWindow .lanes {
+  overflow: visible;
+}
 .gameWindow .lanes p {
   position: absolute;
   top: 20%;
@@ -75,6 +79,13 @@
 .gameWindow #lane6 {
   position: relative;
 }
+.gameWindow .score {
+  position: fixed;
+  top: 94%;
+  left: 50%;
+  color: #363c3d;
+  font-size: 5vh;
+}
 @keyframes asteroid {
   0% {
     right: 0%;
@@ -83,7 +94,7 @@
     right: 50%;
   }
   100% {
-    right: 115%;
+    right: 105%;
   }
 }
 @keyframes slide {

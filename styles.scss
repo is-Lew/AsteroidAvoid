@@ -1,9 +1,11 @@
 * {
     margin: 0px;
     padding: 0px;
+    font-family: "Orbitron", sans-serif;
     // background-color: rgb(46, 46, 46);
     color: #ffffff; 
     font-size: 10vh;
+    overflow: hidden;    
 }
 
 
@@ -11,10 +13,12 @@
     display: grid;
     grid-template-columns: 1fr 8fr;
     grid-template-rows: 6fr 6fr 6fr 6fr 6fr 6fr;
-    height: 99vh;
-    overflow: hidden;
+    height: 99vh;    
+    
+    
 
     .sliding-background {
+        
         position: absolute;
         height: 100%;
         width: 300%;
@@ -91,7 +95,7 @@
 
     .lanes {
          
-    
+        overflow: visible;
 
         p {
             position: absolute;           
@@ -135,6 +139,22 @@
         position: relative;
     }
 
+
+    .score {
+        position: fixed;
+        top: 94%;
+        left: 50%;
+        color: #363c3d;
+        font-size: 5vh;
+    }
+    // .highScore {
+    //     position: fixed;
+    //     top: 94%;
+    //     left: 40%;
+    //     color: #363c3d;
+    //     font-size: 5vh;
+    // }
+
     @keyframes asteroid {
         0% {
           right: 0%;
@@ -143,7 +163,7 @@
           right: 50%;
         }
         100% {
-          right: 115%;
+          right: 105%;
           // Percentages specify when the style change will happen (could up from & to for a-b animation)
         }
     }
