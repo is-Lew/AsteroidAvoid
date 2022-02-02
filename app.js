@@ -1,124 +1,100 @@
-// const playerStartPosition = document.getElementById("gameWindow__playerGrid4")
 const playerGridArr = document.querySelectorAll(".playerGrids")
-const lane1Asteroid = document.getElementById("lane1")
 const asteroidLaneArr = document.querySelectorAll(".lanes")
-const animations = document.querySelectorAll(".animate")
 const ptag = document.querySelectorAll("p")
 
 
-
-
-
-// Spawn asteroids randomly in one of 6 lanes
+const alienHTML = "<h1>👾</h1>" ;
+let alienPosition = 3;
 
 
 const generateAsteroid = () => {
-    let nextAsteroidLocation = Math.floor((Math.random() * 6))
-    
-    ptag[nextAsteroidLocation].style.animation = "asteroid 1s linear";
+    let nextAsteroidLocation = Math.floor((Math.random() * 6))    
+    ptag[nextAsteroidLocation].style.animation = "asteroid .8s linear";
 }
 
 
-const asteroidTimer = setInterval(generateAsteroid, 250)
+const resetAsteroid = () => {
+    for (let i = 0; i < asteroidLaneArr.length; i++) {
+        asteroidLaneArr[i].addEventListener("animationend", () =>{
+            ptag[i].style.animation = "";             
+        })                
+    }  
+}
+const trackScore = () => {
+    const score = document.querySelector(".score")
+    asteroidLaneArr.forEach(element => element.addEventListener ("animationend", () =>{ score.innerHTML++; }))
 
-
-// If asteroid reaches left end of lane and corresponding player box has player in end game 
-asteroidLaneArr[0].addEventListener("animationend", () =>{  
-    ptag[0].style.animation = "";  
-    if (playerGridArr[0].innerHTML.includes("👾")) {
-        alert ("crash")       
+}
+const checkForCrash = () => {   
+    for (let i = 0; i < asteroidLaneArr.length; i++) {
+        asteroidLaneArr[i].addEventListener("animationend", () =>{
+            if (playerGridArr[i].innerHTML.includes("👾")) {alert ("crash")}
+            resetAsteroid();
+        })
     }
-})
-asteroidLaneArr[1].addEventListener("animationend", () =>{  
-    ptag[1].style.animation = "";    
-    if (playerGridArr[1].innerHTML.includes("👾")) {
-        alert ("crash")        
-    }
-})
-asteroidLaneArr[2].addEventListener("animationend", () =>{ 
-    ptag[2].style.animation = "";     
-    if (playerGridArr[2].innerHTML.includes("👾")) {
-        alert ("crash")        
-    }
-})
-asteroidLaneArr[3].addEventListener("animationend", () =>{   
-    ptag[3].style.animation = "";   
-    if (playerGridArr[3].innerHTML.includes("👾")) {
-        alert ("crash")        
-    }
-})
-asteroidLaneArr[4].addEventListener("animationend", () =>{ 
-    ptag[4].style.animation = "";     
-    if (playerGridArr[4].innerHTML.includes("👾")) {
-        alert ("crash")        
-    }
-})
-asteroidLaneArr[5].addEventListener("animationend", () =>{    
-    ptag[5].style.animation = "";  
-    if (playerGridArr[5].innerHTML.includes("👾")) { alert ("crash") }
-})
+}
+
+const movePlayerUp = () => {
+    playerGridArr[alienPosition].innerHTML =""      
+    if (alienPosition > 0) {alienPosition--};    
+    playerGridArr[alienPosition].innerHTML=alienHTML;
+    
+}
+
+const movePlayerDown = () => {
+    playerGridArr[alienPosition].innerHTML =""  
+    if (alienPosition < 5) { alienPosition++};    
+    playerGridArr[alienPosition].innerHTML=alienHTML;    
+}   
 
 
 
 
-// keystroke or click to move player to different grid position 
-document.addEventListener('keydown', (event) => {
-    switch (event.key) {
-        case 'ArrowUp':
-            
-            if (playerGridArr[1].innerHTML.includes("👾")){
-                playerGridArr[1].innerHTML =""
-                
-                playerGridArr[0].innerHTML ="<h1>👾</h1>"
-                 
-            }else if (playerGridArr[2].innerHTML.includes("👾")){
-                playerGridArr[2].innerHTML =""
-                
-                playerGridArr[1].innerHTML ="<h1>👾</h1>"
-                
-            }else if (playerGridArr[3].innerHTML.includes("👾")){
-                playerGridArr[3].innerHTML =""
-                
-                playerGridArr[2].innerHTML ="<h1>👾</h1>"  
-                            
-            }else if (playerGridArr[4].innerHTML.includes("👾")){
-                playerGridArr[4].innerHTML =""
-                
-                playerGridArr[3].innerHTML ="<h1>👾</h1>"
-                 
-            }else if (playerGridArr[5].innerHTML.includes("👾")){
-                playerGridArr[5].innerHTML =""
-                
-                playerGridArr[4].innerHTML ="<h1>👾</h1>"
-                  
-            }
 
+
+// const increaseDifficulty = () => {
+//     let intervalTime = 1000
+    
+//     switch (score.innerHTML) {
+//         case score.innerHTML >= 20:
+//             intervalTime = 20
+//         break;
+//         case score.innerHTML >= 10:
+//             intervalTime = 50
+//         break;
+//         default:
+//             intervalTime = 500
+//         break;
+        
+          
+        
+//     }
+//     return intervalTime;    
+// }
+
+
+// increaseDifficulty()
+// setInterval(generateAsteroid, 500)
+const playerMovement = () => {
+    const gameWindow = document.querySelector("body")
+    gameWindow.addEventListener('keydown', (event) => {
+        switch (event.key) {
+            case 'ArrowUp':            
+                movePlayerUp();                
             break;
-        case 'ArrowDown':
-            if (playerGridArr[0].innerHTML.includes("👾")) {
-                playerGridArr[0].innerHTML = ""
-                
-                playerGridArr[1].innerHTML ="<h1>👾</h1>"
-            } else if (playerGridArr[1].innerHTML.includes("👾")){
-                playerGridArr[1].innerHTML =""
-                
-                playerGridArr[2].innerHTML ="<h1>👾</h1>"
-            }else if (playerGridArr[2].innerHTML.includes("👾")){
-                playerGridArr[2].innerHTML =""
-                
-                playerGridArr[3].innerHTML ="<h1>👾</h1>"
-            }else if (playerGridArr[3].innerHTML.includes("👾")){
-                playerGridArr[3].innerHTML =""
-                
-                playerGridArr[4].innerHTML ="<h1>👾</h1>"
-            }else if (playerGridArr[4].innerHTML.includes("👾")){
-                playerGridArr[4].innerHTML =""
-                
-                playerGridArr[5].innerHTML ="<h1>👾</h1>"
-            }
+            case 'ArrowDown':
+                movePlayerDown();
             break;
-    }
-});
+        }
+    });
 
+}
 
+document.addEventListener("click", (event) => {
+        checkForCrash();
+        trackScore();
+        playerMovement()
+        setInterval(generateAsteroid, 500)
+    
+})
 

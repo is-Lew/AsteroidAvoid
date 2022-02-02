@@ -1,102 +1,110 @@
 "use strict";
 
-// const playerStartPosition = document.getElementById("gameWindow__playerGrid4")
 var playerGridArr = document.querySelectorAll(".playerGrids");
-var lane1Asteroid = document.getElementById("lane1");
 var asteroidLaneArr = document.querySelectorAll(".lanes");
-var animations = document.querySelectorAll(".animate");
-var ptag = document.querySelectorAll("p"); // Spawn asteroids randomly in one of 6 lanes
+var ptag = document.querySelectorAll("p");
+var alienHTML = "<h1>👾</h1>";
+var alienPosition = 3;
 
 var generateAsteroid = function generateAsteroid() {
   var nextAsteroidLocation = Math.floor(Math.random() * 6);
-  ptag[nextAsteroidLocation].style.animation = "asteroid 1s linear";
+  ptag[nextAsteroidLocation].style.animation = "asteroid .8s linear";
 };
 
-var asteroidTimer = setInterval(generateAsteroid, 250); // If asteroid reaches left end of lane and corresponding player box has player in end game 
+var resetAsteroid = function resetAsteroid() {
+  var _loop = function _loop(i) {
+    asteroidLaneArr[i].addEventListener("animationend", function () {
+      ptag[i].style.animation = "";
+    });
+  };
 
-asteroidLaneArr[0].addEventListener("animationend", function () {
-  ptag[0].style.animation = "";
-
-  if (playerGridArr[0].innerHTML.includes("👾")) {
-    alert("crash");
+  for (var i = 0; i < asteroidLaneArr.length; i++) {
+    _loop(i);
   }
-});
-asteroidLaneArr[1].addEventListener("animationend", function () {
-  ptag[1].style.animation = "";
+};
 
-  if (playerGridArr[1].innerHTML.includes("👾")) {
-    alert("crash");
-  }
-});
-asteroidLaneArr[2].addEventListener("animationend", function () {
-  ptag[2].style.animation = "";
+var trackScore = function trackScore() {
+  var score = document.querySelector(".score");
+  asteroidLaneArr.forEach(function (element) {
+    return element.addEventListener("animationend", function () {
+      score.innerHTML++;
+    });
+  });
+};
 
-  if (playerGridArr[2].innerHTML.includes("👾")) {
-    alert("crash");
-  }
-});
-asteroidLaneArr[3].addEventListener("animationend", function () {
-  ptag[3].style.animation = "";
-
-  if (playerGridArr[3].innerHTML.includes("👾")) {
-    alert("crash");
-  }
-});
-asteroidLaneArr[4].addEventListener("animationend", function () {
-  ptag[4].style.animation = "";
-
-  if (playerGridArr[4].innerHTML.includes("👾")) {
-    alert("crash");
-  }
-});
-asteroidLaneArr[5].addEventListener("animationend", function () {
-  ptag[5].style.animation = "";
-
-  if (playerGridArr[5].innerHTML.includes("👾")) {
-    alert("crash");
-  }
-}); // keystroke or click to move player to different grid position 
-
-document.addEventListener('keydown', function (event) {
-  switch (event.key) {
-    case 'ArrowUp':
-      if (playerGridArr[1].innerHTML.includes("👾")) {
-        playerGridArr[1].innerHTML = "";
-        playerGridArr[0].innerHTML = "<h1>👾</h1>";
-      } else if (playerGridArr[2].innerHTML.includes("👾")) {
-        playerGridArr[2].innerHTML = "";
-        playerGridArr[1].innerHTML = "<h1>👾</h1>";
-      } else if (playerGridArr[3].innerHTML.includes("👾")) {
-        playerGridArr[3].innerHTML = "";
-        playerGridArr[2].innerHTML = "<h1>👾</h1>";
-      } else if (playerGridArr[4].innerHTML.includes("👾")) {
-        playerGridArr[4].innerHTML = "";
-        playerGridArr[3].innerHTML = "<h1>👾</h1>";
-      } else if (playerGridArr[5].innerHTML.includes("👾")) {
-        playerGridArr[5].innerHTML = "";
-        playerGridArr[4].innerHTML = "<h1>👾</h1>";
+var checkForCrash = function checkForCrash() {
+  var _loop2 = function _loop2(i) {
+    asteroidLaneArr[i].addEventListener("animationend", function () {
+      if (playerGridArr[i].innerHTML.includes("👾")) {
+        alert("crash");
       }
 
-      break;
+      resetAsteroid();
+    });
+  };
 
-    case 'ArrowDown':
-      if (playerGridArr[0].innerHTML.includes("👾")) {
-        playerGridArr[0].innerHTML = "";
-        playerGridArr[1].innerHTML = "<h1>👾</h1>";
-      } else if (playerGridArr[1].innerHTML.includes("👾")) {
-        playerGridArr[1].innerHTML = "";
-        playerGridArr[2].innerHTML = "<h1>👾</h1>";
-      } else if (playerGridArr[2].innerHTML.includes("👾")) {
-        playerGridArr[2].innerHTML = "";
-        playerGridArr[3].innerHTML = "<h1>👾</h1>";
-      } else if (playerGridArr[3].innerHTML.includes("👾")) {
-        playerGridArr[3].innerHTML = "";
-        playerGridArr[4].innerHTML = "<h1>👾</h1>";
-      } else if (playerGridArr[4].innerHTML.includes("👾")) {
-        playerGridArr[4].innerHTML = "";
-        playerGridArr[5].innerHTML = "<h1>👾</h1>";
-      }
-
-      break;
+  for (var i = 0; i < asteroidLaneArr.length; i++) {
+    _loop2(i);
   }
+};
+
+var movePlayerUp = function movePlayerUp() {
+  playerGridArr[alienPosition].innerHTML = "";
+
+  if (alienPosition > 0) {
+    alienPosition--;
+  }
+
+  ;
+  playerGridArr[alienPosition].innerHTML = alienHTML;
+};
+
+var movePlayerDown = function movePlayerDown() {
+  playerGridArr[alienPosition].innerHTML = "";
+
+  if (alienPosition < 5) {
+    alienPosition++;
+  }
+
+  ;
+  playerGridArr[alienPosition].innerHTML = alienHTML;
+}; // const increaseDifficulty = () => {
+//     let intervalTime = 1000
+//     switch (score.innerHTML) {
+//         case score.innerHTML >= 20:
+//             intervalTime = 20
+//         break;
+//         case score.innerHTML >= 10:
+//             intervalTime = 50
+//         break;
+//         default:
+//             intervalTime = 500
+//         break;
+//     }
+//     return intervalTime;    
+// }
+// increaseDifficulty()
+// setInterval(generateAsteroid, 500)
+
+
+var playerMovement = function playerMovement() {
+  var gameWindow = document.querySelector("body");
+  gameWindow.addEventListener('keydown', function (event) {
+    switch (event.key) {
+      case 'ArrowUp':
+        movePlayerUp();
+        break;
+
+      case 'ArrowDown':
+        movePlayerDown();
+        break;
+    }
+  });
+};
+
+document.addEventListener("click", function (event) {
+  checkForCrash();
+  trackScore();
+  playerMovement();
+  setInterval(generateAsteroid, 500);
 });
