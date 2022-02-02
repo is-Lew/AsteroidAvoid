@@ -4,8 +4,7 @@ var playerGridArr = document.querySelectorAll(".playerGrids");
 var asteroidLaneArr = document.querySelectorAll(".lanes");
 var ptag = document.querySelectorAll("p");
 var alienHTML = "<h1>👾</h1>";
-var alienPosition = 3; // Game 
-// 
+var alienPosition = 3;
 
 var generateAsteroid = function generateAsteroid() {
   var nextAsteroidLocation = Math.floor(Math.random() * 6);

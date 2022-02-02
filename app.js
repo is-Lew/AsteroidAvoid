@@ -6,10 +6,6 @@ const ptag = document.querySelectorAll("p")
 const alienHTML = "<h1>👾</h1>" ;
 let alienPosition = 3;
 
-// Game 
-
-// 
-
 
 const generateAsteroid = () => {
     let nextAsteroidLocation = Math.floor((Math.random() * 6))    
