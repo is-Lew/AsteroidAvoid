@@ -1,14 +1,29 @@
 * {
     margin: 0px;
     padding: 0px;
+    // background-color: rgb(46, 46, 46);
+    color: #ffffff; 
+    font-size: 10vh;
 }
+
 
 .gameWindow {
     display: grid;
     grid-template-columns: 1fr 8fr;
     grid-template-rows: 6fr 6fr 6fr 6fr 6fr 6fr;
-    height: 75vh;
-    width: 75%;
+    height: 99vh;
+    overflow: hidden;
+
+    .sliding-background {
+        position: absolute;
+        height: 100%;
+        width: 300%;
+        background-image: url("https://wallpapercave.com/wp/wp7872562.jpg");
+        animation: slide 10s linear infinite;
+    }
+    
+
+    width: 99%;
     grid-template-areas: 
     "playerG1 lane1"
     "playerG2 lane2"
@@ -17,37 +32,60 @@
     "playerG5 lane5"
     "playerG6 lane6";
     text-align: right;
+
+    
+               
+        
+        .playerGrids {
+            height: 10vh;   
+            
+            
+            h1 {
+                position: absolute;
+                z-index: 1;
+            }
+
+        }
+
+    
     
     
 
     #gameWindow__playerGrid1 {
-        background-color: aquamarine;
+        
         grid-area: playerG1;
+        
         
     }
     #gameWindow__playerGrid2 {
-        background-color: aquamarine;
+       
         grid-area: playerG2;
+        
         
     }
     #gameWindow__playerGrid3 {
-        background-color: aquamarine;
+        
         grid-area: playerG3;
+        
         
     }
     #gameWindow__playerGrid4 {
-        background-color: aquamarine;
+        
         grid-area: playerG4;
+        
+        
         
     }
     #gameWindow__playerGrid5 {
-        background-color: aquamarine;
+        
         grid-area: playerG5;
+        
         
     }
     #gameWindow__playerGrid6 {
-        background-color: aquamarine;
+        
         grid-area: playerG6;
+        
         
     }
 
@@ -57,40 +95,43 @@
 
         p {
             position: absolute;           
-            
-            top: 25%;
-            left: -15%;
+            top: 20%;
+            left: -100%;
             font-size: xx-large;
             color: white;
+
+            img {
+                height: 9vh;
+                                
+            }
         }
 
     }
 
     #lane1 {
-        background-color: brown;
-        position: relative;
         
+        position: relative;
         
     }
     #lane2 {
-        background-color: yellow;
+        
         position: relative;
     }
     #lane3 {
-        background-color: orange;
+        
         position: relative;
     }
     #lane4 {
-        background-color: pink;
+        
         position: relative;
         
     }
     #lane5 {
-        background-color: purple;
+        
         position: relative;
     }
     #lane6 {
-        background-color: grey;
+        
         position: relative;
     }
 
@@ -102,10 +143,21 @@
           right: 50%;
         }
         100% {
-          right: 99%;
+          right: 115%;
           // Percentages specify when the style change will happen (could up from & to for a-b animation)
         }
-      }
+    }
+
+    @keyframes slide {
+        0% {
+          transform: translate3d(0, 0, 0);
+        }
+        100% {
+          transform: translate3d(-60%, 0, 0);
+        }
+    }
+
+    
 
 }
 

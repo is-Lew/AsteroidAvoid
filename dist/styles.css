@@ -1,70 +1,78 @@
 * {
   margin: 0px;
   padding: 0px;
+  color: #ffffff;
+  font-size: 10vh;
 }
 
 .gameWindow {
   display: grid;
   grid-template-columns: 1fr 8fr;
   grid-template-rows: 6fr 6fr 6fr 6fr 6fr 6fr;
-  height: 75vh;
-  width: 75%;
+  height: 99vh;
+  overflow: hidden;
+  width: 99%;
   grid-template-areas: "playerG1 lane1" "playerG2 lane2" "playerG3 lane3" "playerG4 lane4" "playerG5 lane5" "playerG6 lane6";
   text-align: right;
 }
+.gameWindow .sliding-background {
+  position: absolute;
+  height: 100%;
+  width: 300%;
+  background-image: url("https://wallpapercave.com/wp/wp7872562.jpg");
+  animation: slide 10s linear infinite;
+}
+.gameWindow .playerGrids {
+  height: 10vh;
+}
+.gameWindow .playerGrids h1 {
+  position: absolute;
+  z-index: 1;
+}
 .gameWindow #gameWindow__playerGrid1 {
-  background-color: aquamarine;
   grid-area: playerG1;
 }
 .gameWindow #gameWindow__playerGrid2 {
-  background-color: aquamarine;
   grid-area: playerG2;
 }
 .gameWindow #gameWindow__playerGrid3 {
-  background-color: aquamarine;
   grid-area: playerG3;
 }
 .gameWindow #gameWindow__playerGrid4 {
-  background-color: aquamarine;
   grid-area: playerG4;
 }
 .gameWindow #gameWindow__playerGrid5 {
-  background-color: aquamarine;
   grid-area: playerG5;
 }
 .gameWindow #gameWindow__playerGrid6 {
-  background-color: aquamarine;
   grid-area: playerG6;
 }
 .gameWindow .lanes p {
   position: absolute;
-  top: 25%;
-  left: -15%;
+  top: 20%;
+  left: -100%;
   font-size: xx-large;
   color: white;
 }
+.gameWindow .lanes p img {
+  height: 9vh;
+}
 .gameWindow #lane1 {
-  background-color: brown;
   position: relative;
 }
 .gameWindow #lane2 {
-  background-color: yellow;
   position: relative;
 }
 .gameWindow #lane3 {
-  background-color: orange;
   position: relative;
 }
 .gameWindow #lane4 {
-  background-color: pink;
   position: relative;
 }
 .gameWindow #lane5 {
-  background-color: purple;
   position: relative;
 }
 .gameWindow #lane6 {
-  background-color: grey;
   position: relative;
 }
 @keyframes asteroid {
@@ -75,6 +83,14 @@
     right: 50%;
   }
   100% {
-    right: 99%;
+    right: 115%;
+  }
+}
+@keyframes slide {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-60%, 0, 0);
   }
 }
