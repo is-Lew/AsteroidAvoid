@@ -4,7 +4,8 @@ var playerGridArr = document.querySelectorAll(".playerGrids");
 var asteroidLaneArr = document.querySelectorAll(".lanes");
 var ptag = document.querySelectorAll("p");
 var alienHTML = "<h1>👾</h1>";
-var alienPosition = 3;
+var alienPosition = 3; // Game 
+// 
 
 var generateAsteroid = function generateAsteroid() {
   var nextAsteroidLocation = Math.floor(Math.random() * 6);
@@ -68,24 +69,7 @@ var movePlayerDown = function movePlayerDown() {
 
   ;
   playerGridArr[alienPosition].innerHTML = alienHTML;
-}; // const increaseDifficulty = () => {
-//     let intervalTime = 1000
-//     switch (score.innerHTML) {
-//         case score.innerHTML >= 20:
-//             intervalTime = 20
-//         break;
-//         case score.innerHTML >= 10:
-//             intervalTime = 50
-//         break;
-//         default:
-//             intervalTime = 500
-//         break;
-//     }
-//     return intervalTime;    
-// }
-// increaseDifficulty()
-// setInterval(generateAsteroid, 500)
-
+};
 
 var playerMovement = function playerMovement() {
   var gameWindow = document.querySelector("body");
@@ -106,5 +90,5 @@ document.addEventListener("click", function (event) {
   checkForCrash();
   trackScore();
   playerMovement();
-  setInterval(generateAsteroid, 500);
+  setInterval(generateAsteroid, 250);
 });
