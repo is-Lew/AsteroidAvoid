@@ -1,0 +1,74 @@
+.gameWindow {
+    display: grid;
+    grid-template-columns: 1fr 8fr;
+    grid-template-rows: 6fr 6fr 6fr 6fr 6fr 6fr;
+    height: 99vh;
+    width: 99%;
+  
+    .sliding-background {
+      position: absolute;
+      height: 100%;
+      width: 300%;
+      background-image: url("https://wallpapercave.com/wp/wp7872562.jpg");
+      animation: slide 10s linear infinite;
+    }
+    
+    grid-template-areas:
+      "playerG1 lane1"
+      "playerG2 lane2"
+      "playerG3 lane3"
+      "playerG4 lane4"
+      "playerG5 lane5"
+      "playerG6 lane6";
+    text-align: right;
+  
+    .playerGrids {
+      height: 10vh;
+  
+      h1 {
+        position: absolute;
+        z-index: 1;
+      }
+    }
+  
+    #playerGrid1 {
+      grid-area: playerG1;
+    }
+    #playerGrid2 {
+      grid-area: playerG2;
+    }
+    #playerGrid3 {
+      grid-area: playerG3;
+    }
+    #playerGrid4 {
+      grid-area: playerG4;
+    }
+    #playerGrid5 {
+      grid-area: playerG5;
+    }
+    #playerGrid6 {
+      grid-area: playerG6;
+    }
+  
+    .lanes {
+      overflow: visible;
+      position: relative;
+      p {
+        position: absolute;
+        top: 20%;
+        left: -100%;         
+  
+        img {
+          height: 9vh;
+        }
+      }
+    }
+  
+    .score {
+      position: fixed;
+      top: 94%;
+      left: 50%;
+      color: #363c3d;
+      font-size: 5vh;
+    }
+}
