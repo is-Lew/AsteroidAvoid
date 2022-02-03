@@ -1,20 +1,20 @@
 @keyframes asteroid {
-    0% {
-      right: 0%;
-    }
-    50% {
-      right: 50%;
-    }
-    100% {
-      right: 105%;
-    }
+  0% {
+    right: 0%;
   }
+  50% {
+    right: 50%;
+  }
+  100% {
+    right: 105%;
+  }
+}
 
-  @keyframes slide {
-    0% {
-      transform: translate3d(0, 0, 0);
-    }
-    100% {
-      transform: translate3d(-60%, 0, 0);
-    }
+@keyframes slide {
+  0% {
+    transform: translate3d(0, 0, 0);
   }
+  100% {
+    transform: translate3d(-60%, 0, 0);
+  }
+}

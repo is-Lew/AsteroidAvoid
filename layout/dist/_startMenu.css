@@ -28,3 +28,11 @@
     opacity: 0.2;
   }
 }
+@keyframes animate {
+  0% {
+    background-position: left 0px top 0px;
+  }
+  40% {
+    background-position: left 800px top 0px;
+  }
+}

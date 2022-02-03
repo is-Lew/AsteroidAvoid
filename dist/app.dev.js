@@ -3,12 +3,11 @@
 var playerGridArr = document.querySelectorAll(".playerGrids");
 var asteroidLaneArr = document.querySelectorAll(".lanes");
 var pTag = document.querySelectorAll("p");
-var alienHTML = "<h1>👾</h1>";
 var alienPosition = 3;
 
 var generateAsteroid = function generateAsteroid() {
   var nextAsteroidLocation = Math.floor(Math.random() * 6);
-  pTag[nextAsteroidLocation].style.animation = "asteroid .8s linear";
+  pTag[nextAsteroidLocation].style.animation = "asteroid .6s linear";
 };
 
 var resetAsteroid = function resetAsteroid() {
@@ -35,7 +34,9 @@ var trackScore = function trackScore() {
 var checkForCrash = function checkForCrash() {
   var _loop2 = function _loop2(i) {
     asteroidLaneArr[i].addEventListener("animationend", function () {
-      if (playerGridArr[i].innerHTML.includes("👾")) {}
+      if (playerGridArr[i].innerHTML.includes("👾")) {
+        endGame();
+      }
 
       resetAsteroid();
     });
@@ -53,8 +54,7 @@ var movePlayerUp = function movePlayerUp() {
     alienPosition--;
   }
 
-  ;
-  playerGridArr[alienPosition].innerHTML = alienHTML;
+  playerGridArr[alienPosition].innerHTML = "<h1>👾</h1>";
 };
 
 var movePlayerDown = function movePlayerDown() {
@@ -64,19 +64,18 @@ var movePlayerDown = function movePlayerDown() {
     alienPosition++;
   }
 
-  ;
-  playerGridArr[alienPosition].innerHTML = alienHTML;
+  playerGridArr[alienPosition].innerHTML = "<h1>👾</h1>";
 };
 
 var playerMovement = function playerMovement() {
   var gameWindow = document.querySelector("body");
-  gameWindow.addEventListener('keydown', function (event) {
+  gameWindow.addEventListener("keydown", function (event) {
     switch (event.key) {
-      case 'ArrowUp':
+      case "ArrowUp":
         movePlayerUp();
         break;
 
-      case 'ArrowDown':
+      case "ArrowDown":
         movePlayerDown();
         break;
     }
@@ -85,26 +84,40 @@ var playerMovement = function playerMovement() {
 
 var hideStartMenu = function hideStartMenu() {
   var StartScreen = document.querySelector(".startMenu");
-  StartScreen.addEventListener("click", function () {
+  var clickToStart = document.querySelector("h3");
+  clickToStart.addEventListener("click", function () {
     StartScreen.style.display = "none";
+    setInterval(generateAsteroid, 200);
   });
 };
 
 var showCrashScreen = function showCrashScreen() {
-  var CrashScreen = document.querySelector(".crashScreen");
-  StartScreen.addEventListener("click", function () {
-    StartScreen.style.display = "";
+  var crashScreen = document.querySelector(".crashScreen");
+  crashScreen.style.display = "block";
+};
+
+var endGame = function endGame() {
+  pTag.forEach(function (element) {
+    return element.style.display = "none";
   });
+  showCrashScreen();
 };
 
 var startGame = function startGame() {
   document.addEventListener("click", function (event) {
     hideStartMenu();
     checkForCrash();
-    trackScore();
-    playerMovement();
-    setInterval(generateAsteroid, 250);
   });
 };
 
+var restart = function restart() {
+  var tryAgainButton = document.querySelector("#restart");
+  tryAgainButton.addEventListener("click", function (event) {
+    location.reload();
+  });
+};
+
+playerMovement();
 startGame();
+trackScore();
+restart();
