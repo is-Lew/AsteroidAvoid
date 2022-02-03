@@ -9,6 +9,12 @@
 .startMenu h4 {
   margin-top: 5%;
   margin-bottom: 10%;
+  color: rgba(255, 255, 255, 0.2);
+  background-size: 170px;
+  background-image: url("https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/bright-space-galaxy-sololos.jpg");
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: animate 15s linear infinite;
 }
 .startMenu h3 {
   animation: pulsate 2s infinite;
@@ -26,5 +32,13 @@
   }
   100% {
     opacity: 0.2;
+  }
+}
+@keyframes animate {
+  0% {
+    background-position: left 0px top 0px;
+  }
+  40% {
+    background-position: left 800px top 0px;
   }
 }
