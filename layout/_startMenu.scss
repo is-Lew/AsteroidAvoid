@@ -1,0 +1,36 @@
+.startMenu {
+    background-color: #363c3d;
+    height:100%;
+    width:100%;
+    position: fixed;
+    z-index: 3;
+    text-align: center;
+
+    h4 {
+        margin-top: 5%;
+        margin-bottom: 10%;
+    }
+
+    h3 {
+        animation: pulsate 2s  infinite;      
+    }
+
+    
+    h6 {
+        margin-top: 10%;
+        font-size: 0.3em;
+    }
+
+    @keyframes pulsate {
+        0% { 
+            opacity: 0.2;
+        }
+        50% { 
+            opacity: 1.0;
+        }
+        100% { 
+            opacity: 0.2;
+        }
+    }    
+
+}

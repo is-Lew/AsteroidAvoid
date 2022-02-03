@@ -1,0 +1,51 @@
+.crashScreen {
+    display: none;
+    animation: fadeIn 3s linear;   
+    background-color: #363c3d;
+    height:100%;
+    width:100%;
+    position: fixed;
+    z-index: 3;
+    text-align: center;
+
+    h3 {
+        margin-top: 20%;
+        margin-bottom: 4%;
+    }
+
+    h4 {
+        font-size: 0.6em;
+    }
+    
+    h6 {
+        margin-top: 6%;
+        font-size: 0.3em;
+        animation: pulsate 2s  infinite;  
+    }
+
+    @keyframes pulsate {
+        0% { 
+            opacity: 0.2;
+        }
+        50% { 
+            opacity: 1.0;
+        }
+        100% { 
+            opacity: 0.2;
+        }
+    }  
+    
+    @keyframes fadeIn {
+        0% { 
+            opacity: 0.1;
+        }
+        50% { 
+            opacity: 0.5;
+        }
+        100% { 
+            opacity: 1;
+        }
+    }
+
+
+}
