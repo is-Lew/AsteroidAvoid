@@ -111,6 +111,7 @@ var hideStartMenu = function hideStartMenu() {
     StartScreen.style.display = "none";
     asteroidStartingSpeed(generateAsteroid, 700);
     setInterval(IncreaseFrequency(600), 15000);
+    playerMovement();
   });
 };
 
@@ -131,6 +132,7 @@ var startGame = function startGame() {
   document.addEventListener("click", function (event) {
     hideStartMenu();
     checkForCrash();
+    trackScore();
   });
 };
 
@@ -141,7 +143,5 @@ var restart = function restart() {
   });
 };
 
-playerMovement();
 startGame();
-trackScore();
 restart();
