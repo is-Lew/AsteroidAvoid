@@ -4,6 +4,7 @@ var playerGridArr = document.querySelectorAll(".playerGrids");
 var asteroidLaneArr = document.querySelectorAll(".lanes");
 var pTag = document.querySelectorAll("p");
 var alienPosition = 3;
+var asteroidFrequency = 600;
 
 var generateAsteroid = function generateAsteroid() {
   var nextAsteroidLocation = Math.floor(Math.random() * 6);
@@ -47,12 +48,9 @@ var checkForCrash = function checkForCrash() {
   }
 };
 
-var asteroidFrequency = 600;
-
 var IncreaseFrequency = function IncreaseFrequency() {
   clearInterval(asteroidStartingSpeed);
-  asteroidFrequency -= 50; // console.log(asteroidFrequency)
-
+  asteroidFrequency -= 50;
   clearInterval(asteroidSpeed);
   asteroidSpeed(generateAsteroid, asteroidFrequency);
 };
@@ -61,8 +59,8 @@ var asteroidSpeed = function asteroidSpeed(func, frequency) {
   setInterval(func, frequency);
 };
 
-var asteroidStartingSpeed = function asteroidStartingSpeed() {
-  setInterval(generateAsteroid, 700);
+var asteroidStartingSpeed = function asteroidStartingSpeed(func, frequency) {
+  setInterval(func, frequency);
 };
 
 var movePlayerUp = function movePlayerUp() {
@@ -104,10 +102,8 @@ var hideStartMenu = function hideStartMenu() {
   var StartScreen = document.querySelector(".startMenu");
   var clickToStart = document.querySelector("h3");
   clickToStart.addEventListener("click", function () {
-    StartScreen.style.display = "none"; // setInterval(generateAsteroid, 200);
-    // setInterval(increaseDifficulty(),200)
-
-    asteroidStartingSpeed();
+    StartScreen.style.display = "none";
+    asteroidStartingSpeed(generateAsteroid, 700);
     setInterval(IncreaseFrequency, 15000);
   });
 };
