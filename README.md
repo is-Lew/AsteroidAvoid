@@ -1,4 +1,4 @@
-# AsteroidAvoid
+# Asteroid Avoid
 ### By Lewis Halder
 <br />
 
