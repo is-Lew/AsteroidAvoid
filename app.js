@@ -1,14 +1,13 @@
-const playerGridArr = document.querySelectorAll(".playerGrids");
-const asteroidLaneArr = document.querySelectorAll(".lanes");
-const pTag = document.querySelectorAll("p");
 let alienPosition = 3;
 
-
 const generateAsteroid = () => {
+    const pTag = document.querySelectorAll("p");
   let nextAsteroidLocation = Math.floor(Math.random() * 6);
   pTag[nextAsteroidLocation].style.animation = "asteroid .6s linear";
 };
 const resetAsteroid = () => {
+    const pTag = document.querySelectorAll("p");
+    const asteroidLaneArr = document.querySelectorAll(".lanes");
   for (let i = 0; i < asteroidLaneArr.length; i++) {
     asteroidLaneArr[i].addEventListener("animationend", () => {
       pTag[i].style.animation = "";
@@ -16,6 +15,7 @@ const resetAsteroid = () => {
   }
 };
 const trackScore = () => {
+    const asteroidLaneArr = document.querySelectorAll(".lanes");
   const score = document.querySelector(".score");
   asteroidLaneArr.forEach((element) =>
     element.addEventListener("animationend", () => {
@@ -24,6 +24,8 @@ const trackScore = () => {
   );
 };
 const checkForCrash = () => {
+    const asteroidLaneArr = document.querySelectorAll(".lanes");
+    const playerGridArr = document.querySelectorAll(".playerGrids");
   for (let i = 0; i < asteroidLaneArr.length; i++) {
     asteroidLaneArr[i].addEventListener("animationend", () => {
       if (playerGridArr[i].innerHTML.includes("👾")) {
@@ -47,6 +49,7 @@ const asteroidStartingSpeed = (func, frequency) => {
     setInterval(func, frequency)
 }
 const movePlayerUp = () => {
+    const playerGridArr = document.querySelectorAll(".playerGrids");
   playerGridArr[alienPosition].innerHTML = "";
   if (alienPosition > 0) {
     alienPosition--;
@@ -54,6 +57,7 @@ const movePlayerUp = () => {
   playerGridArr[alienPosition].innerHTML = "<h1>👾</h1>";
 };
 const movePlayerDown = () => {
+    const playerGridArr = document.querySelectorAll(".playerGrids");
   playerGridArr[alienPosition].innerHTML = "";
   if (alienPosition < 5) {
     alienPosition++;
@@ -87,6 +91,7 @@ const showCrashScreen = () => {
   crashScreen.style.display = "block";
 };
 const endGame = () => {
+    const pTag = document.querySelectorAll("p");
   pTag.forEach((element) => (element.style.display = "none"));
   showCrashScreen();
 };
