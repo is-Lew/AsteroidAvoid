@@ -47,6 +47,11 @@ var checkForCrash = function checkForCrash() {
   }
 };
 
+var increaseDifficulty = function increaseDifficulty() {
+  var asteroidSpeed = setInterval(generateAsteroid, 200);
+  clearInterval(asteroidSpeed);
+};
+
 var movePlayerUp = function movePlayerUp() {
   playerGridArr[alienPosition].innerHTML = "";
 

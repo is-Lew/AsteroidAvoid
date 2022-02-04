@@ -32,6 +32,12 @@ const checkForCrash = () => {
     });
   }
 };
+
+const increaseDifficulty = () => {
+  const asteroidSpeed =  setInterval(generateAsteroid, 200)
+  clearInterval(asteroidSpeed)
+
+}
 const movePlayerUp = () => {
   playerGridArr[alienPosition].innerHTML = "";
   if (alienPosition > 0) {
