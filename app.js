@@ -2,6 +2,7 @@ const playerGridArr = document.querySelectorAll(".playerGrids");
 const asteroidLaneArr = document.querySelectorAll(".lanes");
 const pTag = document.querySelectorAll("p");
 let alienPosition = 3;
+let asteroidFrequency = 600
 
 const generateAsteroid = () => {
   let nextAsteroidLocation = Math.floor(Math.random() * 6);
@@ -32,20 +33,18 @@ const checkForCrash = () => {
     });
   }
 };
-let asteroidFrequency = 600
+
 const IncreaseFrequency = () => {
     clearInterval(asteroidStartingSpeed)
     asteroidFrequency -= 50
-    // console.log(asteroidFrequency)
     clearInterval(asteroidSpeed) 
     asteroidSpeed(generateAsteroid, asteroidFrequency) 
 }
-
 const asteroidSpeed = (func,frequency) => {
     setInterval(func,frequency)
 }
-const asteroidStartingSpeed = () => {
-    setInterval(generateAsteroid, 700)
+const asteroidStartingSpeed = (func, frequency) => {
+    setInterval(func, frequency)
 }
 const movePlayerUp = () => {
   playerGridArr[alienPosition].innerHTML = "";
@@ -79,9 +78,7 @@ const hideStartMenu = () => {
   const clickToStart = document.querySelector("h3");
   clickToStart.addEventListener("click", () => {
     StartScreen.style.display = "none";
-    // setInterval(generateAsteroid, 200);
-    // setInterval(increaseDifficulty(),200)
-    asteroidStartingSpeed()
+    asteroidStartingSpeed(generateAsteroid,700)
     setInterval(IncreaseFrequency, 15000)
   });
 };
