@@ -96,13 +96,21 @@ const startGame = () => {
     hideStartMenu();
     checkForCrash();
     trackScore();
+    declareWinner();
   });
 };
+const GameWon = () => {
+    const winnerScreen = document.querySelector(".winnerScreen") 
+    winnerScreen.style.display = "block"
+}
+const declareWinner = () => {    
+    setTimeout(GameWon,183000);
+}
 const restart = () => {
   const tryAgainButton = document.querySelector("#restart");
   tryAgainButton.addEventListener("click", (event) => {
     location.reload()
-    
+
   });
 };
 startGame();

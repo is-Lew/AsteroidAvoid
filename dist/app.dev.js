@@ -133,7 +133,17 @@ var startGame = function startGame() {
     hideStartMenu();
     checkForCrash();
     trackScore();
+    declareWinner();
   });
+};
+
+var GameWon = function GameWon() {
+  var winnerScreen = document.querySelector(".winnerScreen");
+  winnerScreen.style.display = "block";
+};
+
+var declareWinner = function declareWinner() {
+  setTimeout(GameWon, 183000);
 };
 
 var restart = function restart() {
