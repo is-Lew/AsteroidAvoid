@@ -32,6 +32,21 @@ const checkForCrash = () => {
     });
   }
 };
+let asteroidFrequency = 600
+const IncreaseFrequency = () => {
+    clearInterval(asteroidStartingSpeed)
+    asteroidFrequency -= 50
+    // console.log(asteroidFrequency)
+    clearInterval(asteroidSpeed) 
+    asteroidSpeed(generateAsteroid, asteroidFrequency) 
+}
+
+const asteroidSpeed = (func,frequency) => {
+    setInterval(func,frequency)
+}
+const asteroidStartingSpeed = () => {
+    setInterval(generateAsteroid, 700)
+}
 const movePlayerUp = () => {
   playerGridArr[alienPosition].innerHTML = "";
   if (alienPosition > 0) {
@@ -64,7 +79,10 @@ const hideStartMenu = () => {
   const clickToStart = document.querySelector("h3");
   clickToStart.addEventListener("click", () => {
     StartScreen.style.display = "none";
-    setInterval(generateAsteroid, 200);
+    // setInterval(generateAsteroid, 200);
+    // setInterval(increaseDifficulty(),200)
+    asteroidStartingSpeed()
+    setInterval(IncreaseFrequency, 15000)
   });
 };
 const showCrashScreen = () => {
