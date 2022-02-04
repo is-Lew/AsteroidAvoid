@@ -4,7 +4,6 @@ var playerGridArr = document.querySelectorAll(".playerGrids");
 var asteroidLaneArr = document.querySelectorAll(".lanes");
 var pTag = document.querySelectorAll("p");
 var alienPosition = 3;
-var asteroidFrequency = 600;
 
 var generateAsteroid = function generateAsteroid() {
   var nextAsteroidLocation = Math.floor(Math.random() * 6);
@@ -48,7 +47,7 @@ var checkForCrash = function checkForCrash() {
   }
 };
 
-var IncreaseFrequency = function IncreaseFrequency() {
+var IncreaseFrequency = function IncreaseFrequency(asteroidFrequency) {
   clearInterval(asteroidStartingSpeed);
   asteroidFrequency -= 50;
   clearInterval(asteroidSpeed);
@@ -104,7 +103,7 @@ var hideStartMenu = function hideStartMenu() {
   clickToStart.addEventListener("click", function () {
     StartScreen.style.display = "none";
     asteroidStartingSpeed(generateAsteroid, 700);
-    setInterval(IncreaseFrequency, 15000);
+    setInterval(IncreaseFrequency(600), 15000);
   });
 };
 
