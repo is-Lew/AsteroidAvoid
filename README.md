@@ -18,9 +18,9 @@ Screenshots
 <br />*Desktop View*<br />
 ![Desktop Screenshot](./images/startScreenshot.jpg)
 <br />
-!(./images/gamePlayScreenshot.jpg)
+![](./images/gamePlayScreenshot.jpg)
 <br />
-!(./images/crashedScreenshot.jpg)
+![](./images/crashedScreenshot.jpg)
 <br />
 
 Credits
