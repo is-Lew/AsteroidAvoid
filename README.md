@@ -17,6 +17,11 @@ Screenshots
 ![mobile Screenshot](./screenshots/screenshot.png)
 <br />*Desktop View*<br />
 ![Desktop Screenshot](./images/startScreenshot.jpg)
+<br />
+(./images/gamePlayScreenshot.jpg)
+<br />
+(./images/crashedScreenshot.jpg)
+<br />
 
 Credits
 =======
