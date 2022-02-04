@@ -3,8 +3,8 @@
   display: none;
   animation: fadeIn 3s linear;
   background-color: $backgroundColor;
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
   position: fixed;
   z-index: 3;
   text-align: center;  
