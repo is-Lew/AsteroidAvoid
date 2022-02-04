@@ -13,19 +13,21 @@ SCSS and JavaScript.
 
 Screenshots
 ===========
-*Mobile View*<br />
-![mobile Screenshots](./images/mobileScreenshot1.jpg)
-<br />
-![](./images/mobileScreenshot2.jpg)
-<br />
-![](./images/mobileScreenshot3.jpg)
-<br />
-<br />*Desktop View*<br />
+
+*Desktop View*<br />
 ![Desktop Screenshots](./images/startScreenshot.jpg)
 <br />
 ![](./images/gamePlayScreenshot.jpg)
 <br />
 ![](./images/crashedScreenshot.jpg)
+<br />
+
+<br /> *Mobile View*<br />
+![mobile Screenshots](./images/mobileScreenshot1.jpg)
+<br />
+![](./images/mobileScreenshot2.jpg)
+<br />
+![](./images/mobileScreenshot3.jpg)
 <br />
 
 Credits
