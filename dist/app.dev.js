@@ -47,9 +47,22 @@ var checkForCrash = function checkForCrash() {
   }
 };
 
-var increaseDifficulty = function increaseDifficulty() {
-  var asteroidSpeed = setInterval(generateAsteroid, 200);
+var asteroidFrequency = 600;
+
+var IncreaseFrequency = function IncreaseFrequency() {
+  clearInterval(asteroidStartingSpeed);
+  asteroidFrequency -= 50; // console.log(asteroidFrequency)
+
   clearInterval(asteroidSpeed);
+  asteroidSpeed(generateAsteroid, asteroidFrequency);
+};
+
+var asteroidSpeed = function asteroidSpeed(func, frequency) {
+  setInterval(func, frequency);
+};
+
+var asteroidStartingSpeed = function asteroidStartingSpeed() {
+  setInterval(generateAsteroid, 700);
 };
 
 var movePlayerUp = function movePlayerUp() {
@@ -91,8 +104,11 @@ var hideStartMenu = function hideStartMenu() {
   var StartScreen = document.querySelector(".startMenu");
   var clickToStart = document.querySelector("h3");
   clickToStart.addEventListener("click", function () {
-    StartScreen.style.display = "none";
-    setInterval(generateAsteroid, 200);
+    StartScreen.style.display = "none"; // setInterval(generateAsteroid, 200);
+    // setInterval(increaseDifficulty(),200)
+
+    asteroidStartingSpeed();
+    setInterval(IncreaseFrequency, 15000);
   });
 };
 
