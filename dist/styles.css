@@ -28,6 +28,7 @@
 }
 .startMenu h3 {
   animation: pulsate 2s infinite;
+  cursor: pointer;
 }
 .startMenu h6 {
   margin-top: 10%;
