@@ -1,6 +1,7 @@
 "use strict";
 
 var alienPosition = 3;
+var asteroidFrequency = 600;
 
 var generateAsteroid = function generateAsteroid() {
   var pTag = document.querySelectorAll("p");
@@ -52,9 +53,10 @@ var checkForCrash = function checkForCrash() {
   }
 };
 
-var IncreaseFrequency = function IncreaseFrequency(asteroidFrequency) {
+var IncreaseFrequency = function IncreaseFrequency() {
   clearInterval(asteroidStartingSpeed);
   asteroidFrequency -= 50;
+  console.log(asteroidFrequency);
   clearInterval(asteroidSpeed);
   asteroidSpeed(generateAsteroid, asteroidFrequency);
 };
@@ -110,13 +112,16 @@ var hideStartMenu = function hideStartMenu() {
   clickToStart.addEventListener("click", function () {
     StartScreen.style.display = "none";
     asteroidStartingSpeed(generateAsteroid, 700);
-    setInterval(IncreaseFrequency(600), 15000);
+    playerMovement();
   });
 };
 
 var showCrashScreen = function showCrashScreen() {
   var crashScreen = document.querySelector(".crashScreen");
+  var score = document.querySelector(".score");
+  var endScore = document.getElementById("endScore");
   crashScreen.style.display = "block";
+  endScore.innerHTML = " Score : ".concat(score.innerHTML, " ");
 };
 
 var endGame = function endGame() {
@@ -131,7 +136,19 @@ var startGame = function startGame() {
   document.addEventListener("click", function (event) {
     hideStartMenu();
     checkForCrash();
+    declareWinner();
   });
+};
+
+var GameWon = function GameWon() {
+  var winnerScreen = document.querySelector(".winnerScreen");
+  var playerGridArr = document.querySelectorAll(".playerGrids");
+  winnerScreen.style.display = "block";
+  playerGridArr[alienPosition].innerHTML = "";
+};
+
+var declareWinner = function declareWinner() {
+  setTimeout(GameWon, 255000);
 };
 
 var restart = function restart() {
@@ -141,7 +158,7 @@ var restart = function restart() {
   });
 };
 
-playerMovement();
 startGame();
-trackScore();
 restart();
+setInterval(IncreaseFrequency, 15000);
+trackScore();

@@ -1,9 +1,10 @@
+@use "./variables" as *;
 .crashScreen {
   display: none;
   animation: fadeIn 3s linear;
-  background-color: #363c3d;
-  height: 100%;
-  width: 100%;
+  background-color: $backgroundColor;
+  height: 100vh;
+  width: 100vw;
   position: fixed;
   z-index: 3;
   text-align: center;  
@@ -24,27 +25,5 @@
     animation: pulsate 2s infinite;
   }
 
-  @keyframes pulsate {
-    0% {
-      opacity: 0.2;
-    }
-    50% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0.2;
-    }
-  }
 
-  @keyframes fadeIn {
-    0% {
-      opacity: 0.1;
-    }
-    50% {
-      opacity: 0.5;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
 }
