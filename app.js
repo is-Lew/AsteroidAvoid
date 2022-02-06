@@ -1,4 +1,5 @@
 let alienPosition = 3;
+let asteroidFrequency = 600
 
 const generateAsteroid = () => {
   const pTag = document.querySelectorAll("p");
@@ -35,9 +36,10 @@ const checkForCrash = () => {
     });
   }
 };
-const IncreaseFrequency = (asteroidFrequency) => {
+const IncreaseFrequency = () => {
   clearInterval(asteroidStartingSpeed);
   asteroidFrequency -= 50;
+  console.log(asteroidFrequency)
   clearInterval(asteroidSpeed);
   asteroidSpeed(generateAsteroid, asteroidFrequency);
 };
@@ -78,33 +80,37 @@ const hideStartMenu = () => {
   clickToStart.addEventListener("click", () => {
     StartScreen.style.display = "none";
     asteroidStartingSpeed(generateAsteroid, 700);
-    setInterval(IncreaseFrequency(600), 15000);
     playerMovement();
   });
 };
 const showCrashScreen = () => {
   const crashScreen = document.querySelector(".crashScreen");
-  crashScreen.style.display = "block";
+  const score = document.querySelector(".score");
+  const endScore = document.getElementById("endScore")
+  crashScreen.style.display = "block";  
+  endScore.innerHTML = ` Score : ${score.innerHTML} `;
 };
 const endGame = () => {
   const pTag = document.querySelectorAll("p");
   pTag.forEach((element) => (element.style.display = "none"));
   showCrashScreen();
+  
 };
 const startGame = () => {
   document.addEventListener("click", (event) => {
     hideStartMenu();
-    checkForCrash();
-    trackScore();
+    checkForCrash();    
     declareWinner();
   });
 };
 const GameWon = () => {
-    const winnerScreen = document.querySelector(".winnerScreen") 
-    winnerScreen.style.display = "block"
+    const winnerScreen = document.querySelector(".winnerScreen");
+    const playerGridArr = document.querySelectorAll(".playerGrids");
+    winnerScreen.style.display = "block"    
+    playerGridArr[alienPosition].innerHTML = "";
 }
 const declareWinner = () => {    
-    setTimeout(GameWon,183000);
+    setTimeout(GameWon, 255000);    
 }
 const restart = () => {
   const tryAgainButton = document.querySelector("#restart");
@@ -115,3 +121,5 @@ const restart = () => {
 };
 startGame();
 restart();
+setInterval(IncreaseFrequency, 15000)
+trackScore();
